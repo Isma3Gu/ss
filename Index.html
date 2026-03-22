@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyers Semana Santa - Diócesis de Aguascalientes</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222; /* Fondo oscuro para resaltar los flyers */
+        }
+
+        /* --- 1. EL CINTILLO (BARRA SUPERIOR) --- */
+        .cintillo {
+            background-color: #7a2682; /* Color morado (tradicional de Semana Santa) */
+            display: flex;
+            align-items: center; /* Centra el logo y los botones verticalmente */
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            position: sticky; /* Hace que el cintillo se quede fijo arriba al hacer scroll */
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo de la Diócesis en el cintillo */
+        .logo-diocesis {
+            height: 60px; /* Alto del logo superior */
+            margin-right: 20px;
+        }
+
+        /* Contenedor de los botones */
+        .contenedor-botones {
+            display: flex;
+            flex-wrap: wrap; /* Si no caben, se pasan al renglón de abajo */
+            gap: 5px; /* Espacio entre botones */
+        }
+
+        /* Estilo de cada botón */
+        .boton-nav {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .boton-nav:hover { background-color: rgba(255, 255, 255, 0.3); }
+        .boton-nav.activo { background-color: white; color: #4b0082; font-weight: bold; }
+
+        /* --- 2. ÁREA DEL FLYER (CONTENIDO) --- */
+        .area-flyer {
+            display: none; /* Se ocultan todos al principio */
+            position: relative; /* Para poner logos y textos encima */
+            width: 100%;
+            max-width: 1000px; /* Ancho máximo para que no se vea gigante en PC */
+            margin: 20px auto; /* Centra el flyer en la pantalla */
+            background-color: #000;
+        }
+
+        /* La imagen grande del flyer */
+        .imagen-fondo {
+            width: 100%;
+            display: block;
+        }
+
+        /* Logo de tu parroquia sobre el flyer */
+        .logo-parroquia {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 90px;
+            border-radius: 5px;
+        }
+
+        /* Nombre de tu parroquia sobre el flyer */
+        .nombre-parroquia {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Estilo para el texto del decanato */
+        .texto-decanato {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: auto; /* Este truco empuja los botones a la derecha */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cintillo">
+        <img src="d:\Escritorio\Correo\logos\Dio.png" alt="Diócesis de Aguascalientes" class="logo-diocesis">
+        
+        <div class="texto-decanato">Decanato Centro</div>
+        
+        <div class="contenedor-botones">
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia1')" id="botonInicio">Señor de los Rayos</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia2')">Santuario de Guadalupe</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia3')">Sagrado Corazón</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia4')">San José</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia5')">San Juan Nepomuceno</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia6')">La Merced</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia7')">Nuestra Señora del Carmen</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia8')">San Antonio</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia9')">Señor del Encino</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia10')">Ave María</button>
+            <button class="boton-nav" onclick="cambiarFlyer(event, 'dia11')">Purísima Concepción de San Diego</button>
+        </div>
+    </div>
+
+    <div id="dia1" class="area-flyer">
+        <div class="nombre-parroquia">Capellanía del Señor de los Rayos</div>
+        <img src="D:\Escritorio\Pagina flayer\Sr de los Rayos.jpeg" class="imagen-fondo" alt="Flyer Día 1">
+    </div>
+
+    <div id="dia2" class="area-flyer">
+        <div class="nombre-parroquia">Parroquia de Nuestra Señora de Guadalupe</div>
+        <img src="D:\Escritorio\Pagina flayer\Santuario de Guadalupe.jpeg" class="imagen-fondo" alt="Flyer Día 2">
+    </div>
+
+    <div id="dia3" class="area-flyer">
+        <div class="nombre-parroquia">Templo Votivo del Sagrado Corazón</div>
+        <img src="D:\Escritorio\Pagina flayer\Sagrado Corazon.jpeg" class="imagen-fondo" alt="Flyer Día 3">
+    </div>
+
+    <div id="dia4" class="area-flyer">
+        <div class="nombre-parroquia">San José Centro</div>
+        <img src="D:\Escritorio\Pagina flayer\San Jose.jpeg" class="imagen-fondo" alt="Flyer Día 4">
+    </div>
+
+    <div id="dia5" class="area-flyer">
+        <div class="nombre-parroquia">Capellanía de San Juan Nepomuceno</div>
+        <img src="D:\Escritorio\Pagina flayer\san juan nepomuceno.jpeg" class="imagen-fondo" alt="Flyer Día 5">
+    </div>
+
+    <div id="dia6" class="area-flyer">
+        <div class="nombre-parroquia">Nuestra Señora del Rosario</div>
+        <img src="D:\Escritorio\Pagina flayer\La merced.jpeg" class="imagen-fondo" alt="Flyer Día 6">
+    </div>
+
+    <div id="dia7" class="area-flyer">
+        <div class="nombre-parroquia">Nuestra Señora del Carmen</div>
+        <img src="D:\Escritorio\Pagina flayer\Nuestra señora del carme.jpeg" class="imagen-fondo" alt="Flyer Día 7">
+    </div>
+
+    <div id="dia8" class="area-flyer">
+        <div class="nombre-parroquia">Capellanía de San Antonio</div>
+        <img src="D:\Escritorio\Pagina flayer\San Antonio.jpeg" class="imagen-fondo" alt="Flyer Día 8">
+    </div>
+
+    <div id="dia9" class="area-flyer">
+        <div class="nombre-parroquia">Señor del Encino</div>
+        <img src="D:\Escritorio\Pagina flayer\El Señor del Encino.jpeg" class="imagen-fondo" alt="Flyer Día 9">
+    </div>
+
+    <div id="dia10" class="area-flyer">
+        <div class="nombre-parroquia">Capellanía del Ave María</div>
+        <img src="D:\Escritorio\Pagina flayer\ave maria.jpeg" class="imagen-fondo" alt="Flyer Día 10">
+    </div>
+
+    <div id="dia11" class="area-flyer">
+         <div class="nombre-parroquia">Purísima Concepción de San Diego</div>
+        <img src="D:\Escritorio\Pagina flayer\Tercera orden.jpg" class="imagen-fondo" alt="Flyer Día 11">
+        <img src="D:\Escritorio\Pagina flayer\Tercera orden (2).jpg" class="imagen-fondo" alt="Flyer Día 11">
+    </div>
+
+
+    <script>
+        function cambiarFlyer(evento, idFlyer) {
+            // 1. Ocultar todos los flyers
+            let flyers = document.getElementsByClassName("area-flyer");
+            for (let i = 0; i < flyers.length; i++) {
+                flyers[i].style.display = "none";
+            }
+
+            // 2. Quitar el estado "activo" (color blanco) de todos los botones
+            let botones = document.getElementsByClassName("boton-nav");
+            for (let i = 0; i < botones.length; i++) {
+                botones[i].className = botones[i].className.replace(" activo", "");
+            }
+
+            // 3. Mostrar el flyer que seleccionamos y pintar el botón correspondiente
+            document.getElementById(idFlyer).style.display = "block";
+            evento.currentTarget.className += " activo";
+        }
+
+        // Hacer que la primera pestaña aparezca automáticamente al abrir la página
+        document.getElementById("botonInicio").click();
+    </script>
+
+</body>
+</html>
